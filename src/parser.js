@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-const rx = /\@\{([^{}]*|\{([^{}]*|\{[^{}]*\})*\})*\}/g;
+const rx = /@\{([^{}]*|\{([^{}]*|\{[^{}]*\})*\})*\}/g;
 function getExpressions(pattern) {
   return pattern.match(rx);
 }
@@ -21,10 +21,11 @@ function highlightExpressions(pattern) {
 }
 
 function transform(pattern) {
-
+  return pattern;
 }
 
 module.exports = {
   getExpressions,
-  highlightExpressions
+  highlightExpressions,
+  transform
 };

@@ -19,9 +19,6 @@
     "babel-plugin-transform-async-to-generator": "^6.22.0",
     "xo": "^0.17.1"
   },
-  "xo": {
-    "space": true
-  },
   "dependencies": {
     "chalk": "^1.1.3",
     "es6-promisify-all": "^0.1.0",
@@ -29,5 +26,13 @@
     "inquirer-autocomplete-prompt": "^0.8.0",
     "meow": "^3.7.0",
     "mkdirp": "^0.5.1"
+  },
+  "xo": {
+    "space": true,
+    "rules": {
+      "import/order": [ 0 ],
+      "unicorn/no-process-exit": [ 0 ],
+      "object-curly-spacing": [ 0 ]
+    }
   }
 }

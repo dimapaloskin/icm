@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const IcmError = require('./error');
 const constants = require('./constants');
 
-module.exports =  async function({ configPath, bookPath }) {
+module.exports = async function ({ configPath, bookPath }) {
   let resolvedConfigPath;
   let resolvedBookPath;
 
@@ -61,7 +61,7 @@ module.exports =  async function({ configPath, bookPath }) {
   if (!resolvedConfigPath) {
     resolvedConfigPath = resolve(icmHomeConfigDir, 'config');
     try {
-       await fs.statAsync(resolvedConfigPath);
+      await fs.statAsync(resolvedConfigPath);
     } catch (err) {
       if (err.code !== 'ENOENT') {
         throw new Error(err);
@@ -78,7 +78,7 @@ module.exports =  async function({ configPath, bookPath }) {
   if (!resolvedBookPath) {
     resolvedBookPath = resolve(icmHomeConfigDir, 'book');
     try {
-       await fs.statAsync(resolvedBookPath);
+      await fs.statAsync(resolvedBookPath);
     } catch (err) {
       if (err.code !== 'ENOENT') {
         throw new Error(err);
@@ -96,5 +96,4 @@ module.exports =  async function({ configPath, bookPath }) {
     config: resolvedConfigPath,
     book: resolvedBookPath
   };
-
-}
+};

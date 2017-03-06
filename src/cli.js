@@ -35,7 +35,7 @@ async function run() {
   const config = JSON.parse(configContents);
 
   switch (command) {
-    case 'add':
+    case 'add': {
       const pattern = cli.input[1];
 
       let name = cli.flags.name;
@@ -63,10 +63,10 @@ async function run() {
       message += `${chalk.green('>')} Use "icm run ${chalk.bold(result.name)}" to execute pattern`;
       console.log(message);
       break;
-
-    default:
+    }
+    default: {
       throw new IcmError(`Command ${chalk.bold(command)} not found`);
-      break;
+    }
   }
 }
 
