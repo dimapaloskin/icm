@@ -4,8 +4,8 @@
   "description": "icm - make your terminal commands interactive",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm run build && node dist/index.js",
-    "dev": "node --harmony-async-await src/index.js",
+    "start": "npm run build && node dist/cli.js",
+    "dev": "node --harmony-async-await src/cli.js",
     "cli-dev": "node --harmony-async-await src/cli.js",
     "build": "babel src -d dist",
     "test": "xo src/*.js"

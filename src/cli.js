@@ -59,7 +59,7 @@ async function run() {
         return;
       }
 
-      let message = `${chalk.green('✓')} Pattern "${chalk.dim(result.pretty)}" succesfully added.\n`;
+      let message = `${chalk.green('✓')} Pattern "${chalk.dim(result.pretty)}" successfully added with name "${chalk.bold(name)}".\n`;
       message += `${chalk.green('>')} Use "icm run ${chalk.bold(result.name)}" to execute pattern`;
       console.log(message);
       break;

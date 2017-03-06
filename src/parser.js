@@ -14,7 +14,7 @@ function highlightExpressions(pattern) {
   let finalString = pattern;
 
   expressions.forEach(expression => {
-    finalString = finalString.replace(expression, chalk.bold(expression));
+    finalString = finalString.replace(expression, chalk.cyan.bold(expression));
   });
 
   return finalString;
