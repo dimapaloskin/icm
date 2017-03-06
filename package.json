@@ -1,0 +1,33 @@
+{
+  "name": "icm",
+  "version": "0.0.1",
+  "description": "icm - make your terminal commands interactive",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "dev": "node --harmony-async-await src/index.js",
+    "cli-dev": "node --harmony-async-await src/cli.js",
+    "build": "babel src -d dist",
+    "test": "xo src/*.js"
+  },
+  "keywords": [],
+  "author": "Dima Paloskin <dima@paloskin.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "space": true
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "es6-promisify-all": "^0.1.0",
+    "inquirer": "^3.0.6",
+    "inquirer-autocomplete-prompt": "^0.8.0",
+    "meow": "^3.7.0",
+    "mkdirp": "^0.5.1"
+  }
+}
