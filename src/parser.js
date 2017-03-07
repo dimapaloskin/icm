@@ -3,7 +3,6 @@ const isNumber = require('is-number');
 const IcmError = require('./error');
 
 const strRx = /%\{([^{}]*|\{([^{}]*|\{[^{}]*\})*\})*\}/g;
-const execRx = /\$\{([^{}]*|\{([^{}]*|\{[^{}]*\})*\})*\}/g;
 
 function getExpressions(pattern) {
   const result = pattern.match(strRx);
@@ -23,7 +22,7 @@ function highlightExpressions(pattern) {
   let finalString = pattern;
 
   expressions.forEach(expression => {
-    finalString = finalString.replace(expression, chalk.cyan.bold(expression));
+    finalString = finalString.split(expression).join(chalk.magenta.bold(expression));
   });
 
   return finalString;
@@ -48,13 +47,12 @@ function transform(pattern) {
         isExecutable = true;
       }
 
-      const sliced = name.slice(name.indexOf('[') + 1, name.lastIndexOf(']'))
+      const sliced = name.slice(name.indexOf('[') + 1, name.lastIndexOf(']'));
       if (isExecutable) {
         out.enums = sliced;
         out.isExecutable = true;
       } else {
         out.enums = sliced.split(',').map(Function.prototype.call, String.prototype.trim);
-        out.enums = out.enums;
       }
 
       name = name.slice(0, name.indexOf('['));
@@ -72,7 +70,6 @@ function transform(pattern) {
 }
 
 async function validate(pattern) {
-  const expressions = getExpressions(pattern);
   const transformed = transform(pattern);
   transformed.forEach(expression => {
     const firstNameCharacter = expression.name[0];
@@ -85,11 +82,11 @@ async function validate(pattern) {
     const reservedSymbols = ['!', '@', '%', '#', '^', '&', '*'];
     const joinedReservedSymbols = reservedSymbols.join(',');
     if (reservedSymbols.includes(firstNameCharacter)) {
-      throw new IcmError(`${chalk.bold(expression.original)} - expression name can not begin with reserved symbols ${joinedReservedSymbols}`)
+      throw new IcmError(`${chalk.bold(expression.original)} - expression name can not begin with reserved symbols ${joinedReservedSymbols}`);
     }
 
     if (reservedSymbols.includes(lastNameCharacter)) {
-      throw new IcmError(`${chalk.bold(expression.original)} - expression name can not end in reserved symbols ${joinedReservedSymbols}`)
+      throw new IcmError(`${chalk.bold(expression.original)} - expression name can not end in reserved symbols ${joinedReservedSymbols}`);
     }
   });
 }

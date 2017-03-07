@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "icm - make your terminal commands interactive",
   "main": "dist/index.js",
+  "bin": "dist/cli.js",
   "scripts": {
     "start": "npm run build && node dist/cli.js",
     "dev": "node --harmony-async-await src/cli.js",
@@ -27,6 +28,7 @@
     "inquirer-autocomplete-prompt": "^0.8.0",
     "is-number": "^3.0.0",
     "meow": "^3.7.0",
+    "micromatch": "^2.3.11",
     "mkdirp": "^0.5.1"
   },
   "xo": {

@@ -1,5 +1,5 @@
 // \$\{([^{}]*|\{([^{}]*|\{[^{}]*\})*\})*\}
-
+// jq '.dependencies, .devDependencies | keys | .[]' package.json
 const meow = require('meow');
 const inquirer = require('inquirer');
 const autocomplete = require('inquirer-autocomplete-prompt');
