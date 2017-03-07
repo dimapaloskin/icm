@@ -7,8 +7,9 @@ const help = require('./help');
 const configurationResolver = require('./configuration-resolver');
 const IcmError = require('./error');
 const add = require('./commands/add');
+const run = require('./commands/run');
 
-async function run() {
+async function runIcm() {
   const cli = meow({
     description: false,
     help
@@ -64,13 +65,24 @@ async function run() {
       console.log(message);
       break;
     }
+
+    case 'run': {
+      const name = cli.input[1];
+      const result = await run({
+        config,
+        bookPath: paths.book,
+        name
+      });
+      break;
+    }
+
     default: {
       throw new IcmError(`Command ${chalk.bold(command)} not found`);
     }
   }
 }
 
-run()
+runIcm()
 .catch(err => {
   if (err instanceof IcmError) {
     console.error(`${chalk.bold.red('error')} ${err.message}`);

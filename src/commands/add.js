@@ -42,6 +42,7 @@ module.exports = async function({ config, bookPath, pattern, name, force }) {
     book.patterns.splice(existsPatternIndex, 1);
   }
 
+  await parser.validate(pattern);
   const formattedPattern = parser.highlightExpressions(pattern);
 
   const data = {
